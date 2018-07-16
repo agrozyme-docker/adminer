@@ -1,10 +1,11 @@
-FROM agrozyme/php:7.2
+FROM agrozyme/php-base:7.2
 COPY docker/ /docker/
 COPY html/ /var/www/html/
 ARG VERSION=4.6.3
 
 RUN set -ex \
   && chmod +x /docker/*.sh \
+  && apk add --no-cache php7-curl php7-json php7-mongodb $(apk search --no-cache -xq php7-pdo* | sort) \
   && mkdir -p /var/www/html/plugins-enabled \
   && wget -O adminer.php https://github.com/vrana/adminer/releases/download/v${VERSION}/adminer-${VERSION}.php \
   && wget -O source.tar.gz https://github.com/vrana/adminer/releases/download/v${VERSION}/adminer-${VERSION}.tar.gz \
