@@ -9,7 +9,7 @@ RUN set -euxo pipefail \
   && wget -O source.tar.gz https://github.com/vrana/adminer/releases/download/v${VERSION}/adminer-${VERSION}.tar.gz \
   && tar xzf source.tar.gz --strip-components=1 "adminer-${VERSION}/designs/" "adminer-${VERSION}/plugins/" \
   && rm source.tar.gz \
-  && chown -R nobody:nobody /var/www/html \
+  && chown -R core:core /var/www/html \
   && sed -ri \
     -e 's!^upload_max_filesize = 2M!upload_max_filesize = 128M!' \
     -e 's!^post_max_size = 8M!post_max_size = 128M!' \
