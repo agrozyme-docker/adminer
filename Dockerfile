@@ -1,10 +1,9 @@
 FROM agrozyme/php:7.2
-COPY docker/ /docker/
-COPY html/ /var/www/html/
+COPY source /
 ARG VERSION=4.6.3
 
 RUN set -euxo pipefail \
-  && chmod +x /docker/*.sh \
+  && chmod +x /usr/local/bin/*.sh \
   && apk add --no-cache php7-session php7-curl php7-json php7-mongodb $(apk search --no-cache -xq php7-pdo* | sort) \
   && wget -O adminer.php https://github.com/vrana/adminer/releases/download/v${VERSION}/adminer-${VERSION}.php \
   && wget -O source.tar.gz https://github.com/vrana/adminer/releases/download/v${VERSION}/adminer-${VERSION}.tar.gz \
@@ -19,4 +18,4 @@ RUN set -euxo pipefail \
     /etc/php7/php.ini
 
 EXPOSE 8080
-CMD ["/docker/agrozyme.adminer.command.sh"]
+CMD ["agrozyme.adminer.command.sh"]
