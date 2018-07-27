@@ -11,11 +11,11 @@ RUN set -euxo pipefail \
   && rm source.tar.gz \
   && chown -R core:core /var/www/html \
   && sed -ri \
-    -e 's!^upload_max_filesize = 2M!upload_max_filesize = 128M!' \
-    -e 's!^post_max_size = 8M!post_max_size = 128M!' \
-    -e 's!^memory_limit = 128M!memory_limit = 1G!' \
-    -e 's!^max_execution_time = 30!max_execution_time = 600!' \
-    /etc/php7/php.ini
+  -e 's/^[;[:space:]]*(upload_max_filesize)[[:space:]]*=.*$/\1 = 128M/i' \
+  -e 's/^[;[:space:]]*(post_max_size)[[:space:]]*=.*$/\1 = 128M/i' \
+  -e 's/^[;[:space:]]*(memory_limit)[[:space:]]*=.*$/\1 = 1G/i' \
+  -e 's/^[;[:space:]]*(max_execution_time)[[:space:]]*=.*$/\1 = 600/i' \
+  /etc/php7/php.ini
 
 EXPOSE 8080
 CMD ["agrozyme.adminer.command.sh"]
