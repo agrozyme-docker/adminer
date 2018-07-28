@@ -9,7 +9,6 @@ RUN set -euxo pipefail \
   && wget -O source.tar.gz https://github.com/vrana/adminer/releases/download/v${VERSION}/adminer-${VERSION}.tar.gz \
   && tar xzf source.tar.gz --strip-components=1 "adminer-${VERSION}/designs/" "adminer-${VERSION}/plugins/" \
   && rm source.tar.gz \
-  && chown -R core:core /var/www/html \
   && sed -ri \
   -e 's/^[;[:space:]]*(upload_max_filesize)[[:space:]]*=.*$/\1 = 128M/i' \
   -e 's/^[;[:space:]]*(post_max_size)[[:space:]]*=.*$/\1 = 128M/i' \
