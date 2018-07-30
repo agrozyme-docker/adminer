@@ -10,9 +10,9 @@ RUN set -euxo pipefail \
   && tar xzf source.tar.gz --strip-components=1 "adminer-${VERSION}/designs/" "adminer-${VERSION}/plugins/" \
   && rm source.tar.gz \
   && sed -ri \
-  -e 's/^[;[:space:]]*(upload_max_filesize)[[:space:]]*=.*$/\1 = 128M/i' \
-  -e 's/^[;[:space:]]*(post_max_size)[[:space:]]*=.*$/\1 = 128M/i' \
-  -e 's/^[;[:space:]]*(memory_limit)[[:space:]]*=.*$/\1 = 1G/i' \
+  -e 's/^[;[:space:]]*(upload_max_filesize)[[:space:]]*=.*$/\1 = 64M/i' \
+  -e 's/^[;[:space:]]*(post_max_size)[[:space:]]*=.*$/\1 = 64M/i' \
+  -e 's/^[;[:space:]]*(memory_limit)[[:space:]]*=.*$/\1 = 128M/i' \
   -e 's/^[;[:space:]]*(max_execution_time)[[:space:]]*=.*$/\1 = 600/i' \
   /etc/php7/php.ini
 
