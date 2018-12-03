@@ -1,6 +1,6 @@
 FROM agrozyme/php:7.2
 COPY source /
-ARG VERSION=4.6.3
+ARG VERSION=4.7.0
 
 RUN set -euxo pipefail \
   && chmod +x /usr/local/bin/*.sh \
