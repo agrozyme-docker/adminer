@@ -3,7 +3,7 @@ local core = require("docker-core")
 
 local function main()
   local url = "https://github.com/vrana/adminer/releases/download"
-  local version = "4.7.1"
+  local version = "4.7.3"
   local file = "source.tar.gz"
 
   -- core.run("apk add --no-cache php7-session php7-curl php7-mongodb $(apk search --no-cache -xq php7-pdo*)")
